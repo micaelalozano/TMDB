@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 //Estilos
 import "../estilos/navbar.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -29,26 +31,24 @@ const Navbar = () => {
           )}
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-        <li>
-          <Link to="/">Inicio</Link>
-        </li>
-        <li>
-          <Link to="/proyectos">Peliculas</Link>
-        </li>
-        <li>
-          <Link to="/acerca_de_mi">Series</Link>
-        </li>
-        <li>
-          <Link to="/contacto">Mas populares</Link>
-        </li>
-      </ul>
-      <Link to="/">
-        <h1>TMDB</h1>
-      </Link>
-      <div className="nav-login">
-          <p>entarr</p>
-          <p>fav</p>
-      </div>
+          <Link to="/">
+            <h1 className="logo">TMDB</h1>
+          </Link>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>Peliculas</li>
+          <li>
+            <Link to="/acerca_de_mi">Series</Link>
+          </li>
+          <li>
+            <Link to="/contacto">Mas populares</Link>
+          </li>
+        </ul>
+        <div className="nav-login">
+          <FavoriteBorderIcon />
+          <LoginIcon />
+        </div>
       </div>
     </>
   );
