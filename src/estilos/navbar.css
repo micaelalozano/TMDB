@@ -19,7 +19,7 @@
 }
 
 .logo {
-  color: brown;
+  color: crimson;
   padding-right: 0.5rem;
 }
 
@@ -38,6 +38,8 @@
   color: white;
   transition: all 0.2s ease;
   text-decoration-color: white;
+  text-shadow: rgb(121, 108, 111) 0.1em 0.1em 0.2em;
+
 }
 
 .nav-login {
@@ -46,6 +48,16 @@
 
 .hamburguer {
   display: none;
+}
+
+.nav-icon {
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.nav-icon:hover {
+  color: crimson;
+  transition: all 0.2s ease;
 }
 
 @media screen and (max-width: 740px) {
@@ -71,5 +83,8 @@
     display: initial;
     z-index: 10;
     cursor: pointer;
+  }
+  .logo {
+    display: none;
   }
 }

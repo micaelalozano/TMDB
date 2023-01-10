@@ -46,8 +46,8 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="nav-login">
-          <FavoriteBorderIcon />
-          <LoginIcon />
+          <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }}/>
+          <LoginIcon className="nav-icon" sx={{ fontSize: 20 }}/>
         </div>
       </div>
     </>
