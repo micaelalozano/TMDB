@@ -39,7 +39,6 @@
   transition: all 0.2s ease;
   text-decoration-color: white;
   text-shadow: rgb(121, 108, 111) 0.1em 0.1em 0.2em;
-
 }
 
 .nav-login {
@@ -58,6 +57,55 @@
 .nav-icon:hover {
   color: crimson;
   transition: all 0.2s ease;
+}
+
+/*{SUBMENU}*/
+.sub-menu {
+  display: none;
+}
+
+.children {
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 15%;
+  margin-top: 10px;
+  background-color: rgba(34, 34, 34, 0.479);
+  border-bottom: 2.5px solid white;
+  border-top: 2.5px solid white;
+}
+
+.children .sub-li {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: none;
+}
+
+.children .sub-li:hover {
+  color: crimson;
+  font-weight: bolder;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+/*{ICONOS}*/
+.material-icons {
+  font-family: "Material Icons";
+  margin-top: 1px;
+  float: right;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 }
 
 @media screen and (max-width: 740px) {

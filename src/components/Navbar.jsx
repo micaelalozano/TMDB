@@ -10,6 +10,12 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
+  const [clickDos, setClickDos] = useState(false);
+  const handleClickDos = () => setClickDos(!clickDos);
+
+  const [clickTres, setClickTres] = useState(false);
+  const handleClickTres = () => setClickTres(!clickTres);
+
   const [color, setColor] = useState(false);
   const changeColor = () => {
     if (window.scrollY >= 100) {
@@ -37,17 +43,57 @@ const Navbar = () => {
           <li>
             <Link to="/">Inicio</Link>
           </li>
-          <li>Peliculas</li>
-          <li>
-            <Link to="/acerca_de_mi">Series</Link>
+
+          <li onClick={handleClickDos}>
+            Peliculas <span className="material-icons">expand_more</span>
+            <ul className={clickDos ? "children" : "sub-menu"}>
+              <Link to="/productos">
+                <li className="sub-li">Ver todo</li>
+              </Link>
+              <Link to="/accion">
+                <li className="sub-li">Accion</li>
+              </Link>
+              <Link to="/sweaters">
+                <li className="sub-li">Comedias</li>
+              </Link>
+              <Link to="/pantalones">
+                <li className="sub-li">Dramas</li>
+              </Link>
+              <Link to="/vestidos">
+                <li className="sub-li">Terror</li>
+              </Link>
+            </ul>
+          </li>
+
+          <li onClick={handleClickTres}>
+              Series <span className="material-icons">expand_more</span>
+              <ul className={clickTres ? "children" : "sub-menu"}>
+              <Link to="/productos">
+                <li className="sub-li">Ver todo</li>
+              </Link>
+              <Link to="/accion">
+                <li className="sub-li">Accion</li>
+              </Link>
+              <Link to="/sweaters">
+                <li className="sub-li">Comedias</li>
+              </Link>
+              <Link to="/pantalones">
+                <li className="sub-li">Dramas</li>
+              </Link>
+              <Link to="/vestidos">
+                <li className="sub-li">Terror</li>
+              </Link>
+            </ul>
           </li>
           <li>
             <Link to="/contacto">Mas populares</Link>
           </li>
         </ul>
         <div className="nav-login">
-          <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }}/>
-          <LoginIcon className="nav-icon" sx={{ fontSize: 20 }}/>
+          <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }} />
+          <Link to="/login">
+            <LoginIcon className="nav-icon" sx={{ fontSize: 20 }} />
+          </Link>
         </div>
       </div>
     </>
