@@ -32,7 +32,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-const Login = () => {
+const Register = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -65,7 +65,7 @@ const Login = () => {
           >
             <Box
               sx={{
-                my: 23,
+                my: 8,
                 mx: 4,
                 display: "flex",
                 flexDirection: "column",
@@ -73,13 +73,32 @@ const Login = () => {
               }}
             >
               <Typography component="h1" variant="h5">
-                <strong> INICIAR SESIÓN </strong>
+                <strong> REGISTRARME </strong>
               </Typography>
               <Box
                 component="form"
                 noValidate
                 /*{onSubmit={handleSubmit}}*/ sx={{ mt: 3 }}
               >
+                 <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Nombre"
+                  name="name"
+                  autoComplete="name"
+                  autoFocus
+                  color="error"
+                />
+                 <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Apellido"
+                  name="lastname"
+                  autoComplete="lastname"
+                  color="error"
+                />
                 <TextField
                   margin="normal"
                   required
@@ -88,7 +107,6 @@ const Login = () => {
                   label="Correo Electronico"
                   name="email"
                   autoComplete="email"
-                  autoFocus
                   color="error"
                 />
                 <TextField
@@ -101,7 +119,14 @@ const Login = () => {
                   id="password"
                   autoComplete="current-password"
                   color="error"
-
+                />
+                    <TextField
+                  margin="normal"
+                  fullWidth
+                  id="imagen"
+                  label="Foto de Perfil"
+                  name="imagen"
+                  color="error"
                 />
                 <Button
                   color="error"
@@ -110,12 +135,12 @@ const Login = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 1 }}
                 >
-                  INICIAR
+                  REGISTRAR
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link to="/register" className="cuenta">
-                      No tenes una cuenta? Registrate aquí 
+                    <Link to="/login" className="cuenta">
+                      Ya tienes cuenta? Click aquí 
                     </Link>
                   </Grid>
                 </Grid>
@@ -129,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
