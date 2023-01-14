@@ -59,6 +59,13 @@
   transition: all 0.2s ease;
 }
 
+.foto-perfil {
+  width: 20px;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
 /*{SUBMENU}*/
 .sub-menu {
   display: none;
@@ -108,19 +115,71 @@
   direction: ltr;
 }
 
+/*{SUB-MENU DE MI CUENTA}*/
+
+.cuenta-menu {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100vh;
+  background-color: rgba(17, 17, 17, 0.959);
+  border-left: ivory solid 2px;
+  position: absolute;
+  top: 0;
+  right: 0%;
+  z-index: 0;
+  transition: 0.3s;
+}
+
+.aca {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.sub-perfil {
+  color: #ffffff;
+  padding-bottom: 0.7rem;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sub-perfil:hover {
+  color: crimson;
+  transition: all 0.2s ease;
+}
+
+.close-perfil {
+  margin-top: 10px;
+  margin-right: 5px;
+  float: right;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 740px) {
   .nav-menu {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: left;
+    padding-top: 10rem;
     width: 100%;
     height: 100vh;
-    background: rgba(123, 163, 124, 0.95);
+    background: #111;
     position: absolute;
     top: 0;
     left: -100%;
-    z-index: 0;
+    z-index: 1; /*{Para que este encima de .cuenta-menu que tiene 0 de z-index aca puse 1 mas}*/
     transition: 0.3s;
+  }
+
+  .nav-menu li {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    padding-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
   }
 
   .nav-menu.active {
@@ -132,7 +191,66 @@
     z-index: 10;
     cursor: pointer;
   }
+
   .logo {
     display: none;
+  }
+
+  .nav-menu li .sub-menu {
+    display: none;
+  }
+
+  .children {
+    display: block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #222;
+    border-bottom: 2.5px solid white;
+    border-top: 2.5px solid white;
+  }
+
+  .children .sub-li {
+    display: block;
+    overflow: hidden;
+    padding: 0.2rem 0em;
+    color: white;
+    margin-left: 1em;
+    font-size: 0.9rem;
+  }
+
+  .cuenta-menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+    background-color: rgba(17, 17, 17, 0.959);
+    border-left: ivory solid 2px;
+    position: absolute;
+    top: 0;
+    right: 0%;
+    z-index: 0;
+    transition: 0.3s;
+  }
+
+  /*{HOVERS}*/
+
+  .nav-menu li {
+    text-decoration: none;
+    transition: none;
+  }
+
+  .nav-menu li:hover {
+    color: white;
+    transition: none;
+    text-decoration-color: none;
+    text-shadow: none;
+  }
+
+  .sub-perfil:hover {
+    color: crimson;
+    transition: all 0.2s ease;
   }
 }

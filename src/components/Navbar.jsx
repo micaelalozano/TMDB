@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 //Estilos
@@ -7,6 +8,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LoginIcon from "@mui/icons-material/Login";
 
 const Navbar = () => {
+  const [user, setUser] = useState({});
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
@@ -15,6 +17,9 @@ const Navbar = () => {
 
   const [clickTres, setClickTres] = useState(false);
   const handleClickTres = () => setClickTres(!clickTres);
+
+  const [click4, setClick4] = useState(false);
+  const handleClick4 = () => setClick4(!click4);
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -26,14 +31,26 @@ const Navbar = () => {
   };
 
   window.addEventListener("scroll", changeColor);
+
+  useEffect(() => {
+    axios
+      .get("/api/users/ruta/perfil")
+      .then((res) => res.data)
+      .then((user) => {
+        setUser(user);
+      });
+  }, []);
+
+  console.log(user);
+
   return (
     <>
       <div className={color ? "header header-bg" : "header"}>
         <div className="hamburguer" onClick={handleClick}>
           {click ? (
-            <FaTimes size={25} style={{ color: "#993a3a" }} />
+            <FaTimes size={23} style={{ color: "#dc143c" }} />
           ) : (
-            <FaBars size={25} style={{ color: "#b34f4f" }} />
+            <FaBars size={23} style={{ color: "#dc143c" }} />
           )}
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -66,8 +83,8 @@ const Navbar = () => {
           </li>
 
           <li onClick={handleClickTres}>
-              Series <span className="material-icons">expand_more</span>
-              <ul className={clickTres ? "children" : "sub-menu"}>
+            Series <span className="material-icons">expand_more</span>
+            <ul className={clickTres ? "children" : "sub-menu"}>
               <Link to="/productos">
                 <li className="sub-li">Ver todo</li>
               </Link>
@@ -89,12 +106,43 @@ const Navbar = () => {
             <Link to="/contacto">Mas populares</Link>
           </li>
         </ul>
-        <div className="nav-login">
-          <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }} />
-          <Link to="/login">
-            <LoginIcon className="nav-icon" sx={{ fontSize: 20 }} />
-          </Link>
-        </div>
+
+        {user.name ? (
+          <>
+            <div className="nav-login">
+              <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }} />
+              <img
+                onClick={handleClick4}
+                className="foto-perfil"
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                alt=""
+              />{" "}
+              <ul className={click4 ? "cuenta-menu" : "sub-menu"}>
+                <FaTimes
+                  onClick={handleClick4}
+                  size={18}
+                  style={{ color: "#ffffff" }}
+                  className="close-perfil"
+                />
+                <div className="aca">
+                  <Link to="/mi_cuenta">
+                    <li className="sub-perfil">Mi Cuenta</li>
+                  </Link>
+                  <li className="sub-perfil">Cerrar Sesion</li>
+                </div>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="nav-login">
+              <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }} />
+              <Link to="/login">
+                <LoginIcon className="nav-icon" sx={{ fontSize: 20 }} />
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
