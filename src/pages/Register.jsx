@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,6 +35,30 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [imagen, setImagen] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("api/users", {
+        name: name,
+        lastname: lastname,
+        email: email,
+        password: password,
+        imagen: imagen,
+      })
+      .then((res) => res.data)
+      .then(() => {
+        navigate("/login");
+      });
+  };
+  console.log("esto es", name, lastname, email, password, imagen);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -66,7 +92,7 @@ const Register = () => {
             <Box
               sx={{
                 my: 8,
-                mx: 4,
+                mx: 8,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -78,9 +104,10 @@ const Register = () => {
               <Box
                 component="form"
                 noValidate
-                /*{onSubmit={handleSubmit}}*/ sx={{ mt: 3 }}
+                onSubmit={handleSubmit}
+                sx={{ mt: 3 }}
               >
-                 <TextField
+                <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -89,8 +116,10 @@ const Register = () => {
                   autoComplete="name"
                   autoFocus
                   color="error"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
                 />
-                 <TextField
+                <TextField
                   margin="normal"
                   required
                   fullWidth
@@ -98,6 +127,8 @@ const Register = () => {
                   name="lastname"
                   autoComplete="lastname"
                   color="error"
+                  onChange={(e) => setLastname(e.target.value)}
+                  value={lastname}
                 />
                 <TextField
                   margin="normal"
@@ -108,6 +139,8 @@ const Register = () => {
                   name="email"
                   autoComplete="email"
                   color="error"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
                 <TextField
                   margin="normal"
@@ -119,14 +152,18 @@ const Register = () => {
                   id="password"
                   autoComplete="current-password"
                   color="error"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                 />
-                    <TextField
+                <TextField
                   margin="normal"
                   fullWidth
                   id="imagen"
-                  label="Foto de Perfil"
+                  label="URL foto de Perfil"
                   name="imagen"
                   color="error"
+                  onChange={(e) => setImagen(e.target.value)}
+                  value={imagen}
                 />
                 <Button
                   color="error"
@@ -140,7 +177,7 @@ const Register = () => {
                 <Grid container>
                   <Grid item xs>
                     <Link to="/login" className="cuenta">
-                      Ya tienes cuenta? Click aquí 
+                      Ya tienes cuenta? Click aquí
                     </Link>
                   </Grid>
                 </Grid>

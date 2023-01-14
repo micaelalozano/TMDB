@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/api", router);
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   console.log("Db Connected");
   app.listen(3001, () => console.log("Servidor escuchando en el puerto 3001"));
 });

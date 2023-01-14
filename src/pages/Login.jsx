@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,6 +35,23 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/users/login", { email, password }, { withCredentials: true })
+      .then((res) => res.data)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        window.alert("El usuario es incorrecto o no esta registrado");
+      });
+  };
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -78,7 +97,8 @@ const Login = () => {
               <Box
                 component="form"
                 noValidate
-                /*{onSubmit={handleSubmit}}*/ sx={{ mt: 3 }}
+                onSubmit={handleSubmit}
+                sx={{ mt: 3 }}
               >
                 <TextField
                   margin="normal"
@@ -90,6 +110,8 @@ const Login = () => {
                   autoComplete="email"
                   autoFocus
                   color="error"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
                 <TextField
                   margin="normal"
@@ -101,7 +123,8 @@ const Login = () => {
                   id="password"
                   autoComplete="current-password"
                   color="error"
-
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                 />
                 <Button
                   color="error"
@@ -115,7 +138,7 @@ const Login = () => {
                 <Grid container>
                   <Grid item xs>
                     <Link to="/register" className="cuenta">
-                      No tenes una cuenta? Registrate aquí 
+                      No tenes una cuenta? Registrate aquí
                     </Link>
                   </Grid>
                 </Grid>
