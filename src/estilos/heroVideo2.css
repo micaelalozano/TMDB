@@ -32,7 +32,7 @@
   position: absolute;
   transform: translate(0, -40%);
   top: 40%;
-  left: 1rem;
+  left: 2rem;
 }
 
 .movie {
@@ -69,6 +69,8 @@
   color: black;
   background-color: rgba(255, 255, 240, 0.315);
   outline: none;
+  text-shadow: ivory 0.1em 0.1em 0.2em;
+
 }
 
 .btn-search {

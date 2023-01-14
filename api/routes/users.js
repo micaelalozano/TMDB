@@ -40,4 +40,46 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+//Rutas para hacer el login con Auth:
+router.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  Users.findOne({ where: { email } }).then((user) => {
+    if (!user) return res.sendStatus(401);
+    user.validatePassword(password).then((isValid) => {
+      if (!isValid) return res.sendStatus(401);
+
+      const payload = {
+        email: user.email,
+        name: user.name,
+        lastname: user.lastname,
+        imagen: user.imagen,
+      };
+
+      const token = generateToken(payload);
+      console.log(token);
+      res.cookie("token", token);
+
+      res.send(payload);
+    });
+  });
+});
+
+//Ruta para hacer el login con Auth (poner una barra antes del /me cuando se pedido GET para que no entre en otra ruta):
+router.get("/ruta/me", validateAuth, (req, res) => {
+  //console.log(req.user);
+  res.send(req.user);
+});
+
+// Esto seria /secret (usuario logueado en el momento)
+router.get("/ruta/perfil", validateAuth, (req, res) => {
+  res.send(req.user);
+});
+
+router.post("/logout", (req, res) => {
+  res.clearCookie("token");
+
+  res.sendStatus(204);
+});
+
 module.exports = router;
