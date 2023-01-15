@@ -103,7 +103,7 @@ const Navbar = () => {
             </ul>
           </li>
           <li>
-            <Link to="/contacto">Mas populares</Link>
+            <Link to="/contacto">Mejor votadas</Link>
           </li>
         </ul>
 
