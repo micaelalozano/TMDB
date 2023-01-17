@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 100) {
+    if (window.scrollY >= 10) {
       setColor(true);
     } else {
       setColor(false);
@@ -40,6 +40,15 @@ const Navbar = () => {
         setUser(user);
       });
   }, []);
+
+  const handleLogout = () => {
+    axios
+      .post("/api/users/logout")
+      .then((res) => res.data)
+      .then((user) => {
+        setUser(user);
+      });
+  };
 
   console.log(user);
 
@@ -128,7 +137,7 @@ const Navbar = () => {
                   <Link to="/mi_cuenta">
                     <li className="sub-perfil">Mi Cuenta</li>
                   </Link>
-                  <li className="sub-perfil">Cerrar Sesion</li>
+                  <li className="sub-perfil" onClick={handleLogout}>Cerrar Sesion</li>
                 </div>
               </ul>
             </div>

@@ -1,13 +1,13 @@
 .mask-dos {
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   position: relative;
 }
 
 .mask-dos::after {
   content: "";
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@
   width: 35%;
   position: absolute;
   transform: translate(0, -40%);
-  top: 45%;
+  top: 50%;
   left: 2rem;
 }
 
@@ -64,7 +64,6 @@
   color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 240, 0.315);
   outline: none;
-  text-shadow: ivory 0.1em 0.1em 0.2em;
 }
 
 .btn-search {
@@ -113,10 +112,26 @@
 }
 
 @media screen and (max-width: 500px) {
+  .mask-dos {
+    width: 100%;
+    height: 65vh;
+    position: relative;
+  }
+
+  .mask-dos::after {
+    content: "";
+    width: 100%;
+    height: 65vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0px -4em 3em 0px #111;
+  }
+
   .hero-dos .content-dos {
     width: 70%;
     transform: translate(0, -40%);
-    top: 45%;
+    top: 44%;
   }
 
   .movie {
