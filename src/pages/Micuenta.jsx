@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 
 const Micuenta = () => {
   return <>
-  <Navbar/>
   <HeroImg/>
   </>;
 };

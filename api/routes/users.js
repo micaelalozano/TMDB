@@ -19,16 +19,23 @@ router.get("/", (req, res) => {
   });
 });
 
+//Buscar los usuarios por ID:
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+  Users.findByPk(id).then((data) => {
+    res.status(200).send(data);
+  });
+});
+
 //Actualizar usuarios:
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { name, lastname, email, imagen } = req.body;
+  const { imagen } = req.body;
 
-  Users.update({ name, lastname, email, imagen }, { where: { id } }).then(
-    (data) => {
-      res.status(200).send(data);
-    }
-  );
+  Users.update({ imagen }, { where: { id } }).then((data) => {
+    res.status(200).send(data);
+  });
 });
 
 //Eliminar usuarios:

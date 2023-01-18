@@ -120,12 +120,16 @@ const Navbar = () => {
           <>
             <div className="nav-login">
               <FavoriteBorderIcon className="nav-icon" sx={{ fontSize: 20 }} />
-              <img
-                onClick={handleClick4}
-                className="foto-perfil"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                alt=""
-              />{" "}
+                <img
+                  onClick={handleClick4}
+                  className="foto-perfil"
+                  src={
+                    user.imagen
+                      ? user.imagen
+                      : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  }
+                  alt="Foto de perfil"
+                />{" "}
               <ul className={click4 ? "cuenta-menu" : "sub-menu"}>
                 <FaTimes
                   onClick={handleClick4}
@@ -137,7 +141,9 @@ const Navbar = () => {
                   <Link to="/mi_cuenta">
                     <li className="sub-perfil">Mi Cuenta</li>
                   </Link>
-                  <li className="sub-perfil" onClick={handleLogout}>Cerrar Sesion</li>
+                  <li className="sub-perfil" onClick={handleLogout}>
+                    Cerrar Sesion
+                  </li>
                 </div>
               </ul>
             </div>
