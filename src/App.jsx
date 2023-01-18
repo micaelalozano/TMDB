@@ -6,6 +6,7 @@ import Inicio from "./pages/Inicio";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Micuenta from "./pages/Micuenta";
+import Tr from "./pages/Tr";
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -29,7 +30,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/mi_cuenta" element={<Micuenta />} />
+        <Route path="/cambiar_foto_perfil" element={<Tr />} />
       </Routes>
+      
     </>
   );
 };
